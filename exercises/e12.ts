@@ -5,10 +5,10 @@ import { AllData } from "../data/types";
 
 // Return example: 42
 export const allPlanetsMoonsCount = (data: AllData) => {
-  return data.planets
+  const planetMoons = data.planets
     .filter((planet) => planet.moonsCount && planet.moonsCount)
-    .map((planet) => planet.moonsCount)
-    .reduce((sum, planet) => sum! + planet!);
+    .reduce((sum, planet) => sum + planet.moonsCount!, 0);
+  return planetMoons;
 };
 
 // === TEST YOURSELF ===

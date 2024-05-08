@@ -8,7 +8,7 @@ export function getAsteroidsDiscoveredAfterYear(
   year: number
 ) {
   return asteroids.filter(
-    (asteroid) => asteroid.discoveryYear > year && asteroid
+    (asteroid) => asteroid?.discoveryYear > year && asteroid
   );
 }
 

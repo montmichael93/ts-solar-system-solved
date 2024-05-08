@@ -8,12 +8,14 @@ describe("findPlanetNameByMoon", () => {
   });
   it("Should be the planet Neptune object for Triton moon", () => {
     expect(
+      //@ts-ignore error TS2339: Property 'name' does not exist on type 'false | Planet'.
       findPlanetByMoon({ moonName: "Triton", planets: data.planets })?.name
     ).toEqual("Neptune");
   });
 
   it("Should not care about case sensitivity", () => {
     expect(
+      //@ts-ignore error TS2339: Property 'name' does not exist on type 'false | Planet'.
       findPlanetByMoon({ moonName: "triton", planets: data.planets })?.name
     ).toEqual("Neptune");
   });

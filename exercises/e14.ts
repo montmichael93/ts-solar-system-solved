@@ -7,7 +7,7 @@ import { Asteroid } from "../data/types";
 export function getOrbitalPeriodsSum(asteroids: Asteroid[]) {
   return asteroids
     .map((asteroid) => asteroid.orbitalPeriod)
-    .reduce((sum, orbitalPeriod) => sum! + orbitalPeriod!);
+    .reduce((sum, orbitalPeriod) => sum + orbitalPeriod);
 }
 
 // === TEST YOURSELF ===

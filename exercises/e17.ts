@@ -1,35 +1,22 @@
-export const minBy = <TYPE>(
-  array: TYPE[],
-  cb: (ele: TYPE) => string | number
-) => {
-  let min: string | number = Infinity;
-  let strMin: string | number = "z";
-  let outPut;
-  for (let item of array) {
-    let someValue = cb(item);
-    if (someValue < min) {
-      min = someValue;
-      outPut = item;
-    } else {
-      if (someValue < strMin) {
-        strMin = someValue;
-        outPut = item;
-      }
+export const minBy = <T>(array: T[], cb: (ele: T) => string | number) => {
+  if (array.length === 0) return undefined;
+  let currentMin: T = array[0]!;
+  for (let el of array) {
+    const testMinVal = cb(currentMin);
+    if (testMinVal > cb(el)) {
+      currentMin = el;
     }
   }
-
-  return outPut;
+  return currentMin;
 };
 
-export function maxBy<TYPE>(array: TYPE[], cb: (ele: TYPE) => number) {
-  let max = -Infinity;
-  let outPut;
-  for (let item of array) {
-    let someValue = cb(item);
-    if (someValue > max) {
-      max = someValue;
-      outPut = item;
+export function maxBy<T>(array: T[], cb: (ele: T) => number) {
+  let currentMax: T = array[0]!;
+  for (let el of array) {
+    const testMinVal = cb(currentMax);
+    if (testMinVal < cb(el)) {
+      currentMax = el;
     }
   }
-  return outPut;
+  return currentMax;
 }

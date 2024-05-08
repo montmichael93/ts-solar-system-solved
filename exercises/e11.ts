@@ -5,13 +5,7 @@ import { Planet } from "../data/types";
 
 // include planets with 0 moons
 export function lowMoonsPlanets(planets: Planet[]) {
-  return planets
-    .filter(
-      (planet) =>
-        planet.moons === undefined ||
-        (planet.moons && planet.moons.length < 10 && planet.name)
-    )
-    .map((planet) => planet);
+  return planets.filter((planet) => (planet?.moons?.length ?? 0) < 10);
 }
 
 // === TEST YOURSELF ===

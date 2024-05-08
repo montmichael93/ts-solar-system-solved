@@ -7,21 +7,19 @@ import { Asteroid } from "../data/types";
 
 export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
   const mapYears = new Map();
-  let max = -Infinity;
+  let max = -1;
   let entriesWithMaxValue: number[] = [];
-  asteroids
-    .map((asteroid) => asteroid.discoveryYear)
-    .sort((a, b) => a - b)
-    .forEach((item) => {
-      if (mapYears.has(item)) {
-        let currentValue = mapYears.get(item);
-        mapYears.set(item, currentValue + 1);
-      } else {
-        mapYears.set(item, 1);
-      }
-    });
+  asteroids.forEach((asteroid) => {
+    if (mapYears.has(asteroid.discoveryYear)) {
+      let currentValue = mapYears.get(asteroid.discoveryYear);
+      mapYears.set(asteroid.discoveryYear, currentValue + 1);
+    } else {
+      mapYears.set(asteroid.discoveryYear, 1);
+    }
+  });
+
   mapYears.forEach((value: number, key: number) => {
-    if (value > max) {
+    if (value > max!) {
       max = value;
       entriesWithMaxValue = [key, value];
     } else if (value === max) {

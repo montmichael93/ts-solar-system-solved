@@ -13,13 +13,13 @@ export function findPlanetByMoon({
 }) {
   return planets
     .filter((planet) => planet.moons && planet)
-    .map(
-      (planet) =>
-        planet.moons &&
-        planet.moons
-          .map((moonName) => moonName.toLowerCase())
-          .includes(moonName.toLowerCase()) &&
-        planet
+    .map((planet) =>
+      planet.moons &&
+      planet.moons
+        .map((moonName) => moonName.toLowerCase())
+        .includes(moonName.toLowerCase())
+        ? planet
+        : false
     )
     .filter((planet) => planet && planet)[0];
 }
